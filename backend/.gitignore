@@ -1,0 +1,96 @@
+# ========== Node & TypeScript Setup ==========
+
+# Build output
+dist/
+build/
+out/
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Local environment variables
+.env
+.env.*.local
+
+# Node modules
+node_modules/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.pnpm-debug.log*
+
+# Coverage directories
+coverage/
+.nyc_output
+*.lcov
+
+# Dependency directories
+bower_components/
+jspm_packages/
+web_modules/
+
+# Parcel, Snowpack, and other build caches
+.cache/
+.parcel-cache
+.rpt2_cache/
+.rts2_cache_*/
+
+# Editors/IDEs
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# REPL history
+.node_repl_history
+
+# Package outputs
+*.tgz
+
+# Optional caches
+.eslintcache
+.stylelintcache
+
+# Serverless & deployment
+.serverless/
+.webpack/
+
+# Others
+.pnp.*
+.yarn-integrity
+.yarn/cache/
+.yarn/unplugged/
+.yarn/build-state.yml
+.yarn/install-state.gz
+
+# Docusaurus / VuePress
+.docusaurus/
+.vuepress/dist/
+.temp/
+
+# SvelteKit
+.svelte-kit/
+
+# Test & Debug
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Binary builds
+build/Release
+lib-cov
+.lock-wscript
+
+# Diagnostic reports
+report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+
+# VSCode extension testing
+.vscode-test
