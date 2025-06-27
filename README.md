@@ -60,7 +60,9 @@ The data is provided as JSON slices:
 
 _Add a screenshot of the dashboard here once complete._
 
+CustomerType -> https://github.com/user-attachments/assets/c60425c9-3865-4fab-924b-69d9ba4f6768
 
+TeamType    -> https://github.com/user-attachments/assets/7f53587d-9a5d-4570-bd32-9f9c7a1a5593
 
 
 ---
