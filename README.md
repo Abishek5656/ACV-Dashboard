@@ -68,6 +68,9 @@ The data is provided as JSON slices:
 
 
 ---
+Video
+
+https://github.com/user-attachments/assets/adcbefa8-4f5d-45a4-ab90-1567794bb2e0
 
 ## 🚀 Getting Started
 
@@ -77,3 +80,7 @@ The data is provided as JSON slices:
 cd backend
 npm install
 npm run dev   # Or npm start after building
+
+cd frontend
+npm install
+npm run dev
