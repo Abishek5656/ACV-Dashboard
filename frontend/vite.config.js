@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'http://localhost:8000', // Your backend base URL
+        target: 'https://acv-dashboard.onrender.com', // Your backend base URL
         changeOrigin: true,
     
       }
