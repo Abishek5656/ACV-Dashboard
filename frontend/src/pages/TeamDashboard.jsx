@@ -51,7 +51,7 @@ const TeamDashboard = () => {
         totalACV={totalACV}
         groupKey="Team"
       />
-      <TableSection data={teamData} />
+      <TableSection data={teamData}  groupKey="Team"/>
     </Grid>
   );
 };

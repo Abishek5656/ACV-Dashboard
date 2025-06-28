@@ -49,7 +49,7 @@ const ACVDashboard = () => {
         totalACV={totalACV}
         groupKey="ACV_Range"
       />
-      <TableSection data={acvData} />
+      <TableSection data={acvData} groupKey="ACV_Range"/>
     </Grid>
   );
 };

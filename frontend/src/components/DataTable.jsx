@@ -1,3 +1,4 @@
+// 
 // src/components/DataTable.jsx
 import React from 'react';
 import {
@@ -7,13 +8,15 @@ import {
 
 const formatMoney = val => `$${(val / 1000).toFixed(0)}K`;
 
-const DataTable = ({ data }) => {
-  const grouped = {};
+const DataTable = ({ data, queryKey = "Cust_Type" }) => {
+  if (!data || data.length === 0) return <Typography>No data available</Typography>;
+
+  const groupedByQuarter = {};
 
   data.forEach(row => {
     const quarter = row.closed_fiscal_quarter;
-    if (!grouped[quarter]) grouped[quarter] = [];
-    grouped[quarter].push(row);
+    if (!groupedByQuarter[quarter]) groupedByQuarter[quarter] = [];
+    groupedByQuarter[quarter].push(row);
   });
 
   const totals = data.reduce(
@@ -24,24 +27,24 @@ const DataTable = ({ data }) => {
     { count: 0, acv: 0 }
   );
 
+  const uniqueTypes = Array.from(new Set(data.map(d => d[queryKey])));
+
   return (
     <>
       <Typography variant="h6" gutterBottom>
-        Opportunity Table
+        Opportunity Table by <strong>{queryKey}</strong>
       </Typography>
       <Table size="small">
         <TableHead>
           <TableRow>
-            <TableCell>Cust Type</TableCell>
-            {Object.keys(grouped).map(q => (
+            <TableCell>{queryKey}</TableCell>
+            {Object.keys(groupedByQuarter).map(q => (
               <TableCell
                 key={q}
                 align="center"
                 colSpan={3}
                 sx={{
-                  backgroundColor: ['2023-Q3', '2024-Q1'].includes(q)
-                    ? '#1976d2'   // Dark Blue
-                    : '#90caf9',  // Light Blue
+                  backgroundColor: ['2023-Q3', '2024-Q1'].includes(q) ? '#1976d2' : '#90caf9',
                   color: 'white',
                   fontWeight: 'bold'
                 }}
@@ -49,22 +52,13 @@ const DataTable = ({ data }) => {
                 {q}
               </TableCell>
             ))}
-            <TableCell
-              align="center"
-              colSpan={3}
-              sx={{
-                backgroundColor: '#1565c0',  // Total header
-                color: 'white',
-                fontWeight: 'bold'
-              }}
-            >
+            <TableCell align="center" colSpan={3} sx={{ backgroundColor: '#1565c0', color: 'white', fontWeight: 'bold' }}>
               Total
             </TableCell>
           </TableRow>
-
           <TableRow>
             <TableCell />
-            {Object.keys(grouped).map((_, idx) => (
+            {Object.keys(groupedByQuarter).map((_, idx) => (
               <React.Fragment key={idx}>
                 <TableCell># of Opps</TableCell>
                 <TableCell>ACV</TableCell>
@@ -76,15 +70,14 @@ const DataTable = ({ data }) => {
             <TableCell>% of Total</TableCell>
           </TableRow>
         </TableHead>
-
         <TableBody>
-          {['Existing Customer', 'New Customer'].map(type => {
+          {uniqueTypes.map(type => {
             const rowData = [];
             let totalCount = 0;
             let totalACV = 0;
 
-            Object.values(grouped).forEach(quarterRows => {
-              const entry = quarterRows.find(r => r.Cust_Type === type);
+            Object.values(groupedByQuarter).forEach(quarterRows => {
+              const entry = quarterRows.find(r => r[queryKey] === type);
               if (entry) {
                 totalCount += entry.count;
                 totalACV += entry.acv;
@@ -101,7 +94,7 @@ const DataTable = ({ data }) => {
                   <React.Fragment key={i}>
                     <TableCell>{d.count}</TableCell>
                     <TableCell>{formatMoney(d.acv)}</TableCell>
-                    <TableCell>{((d.acv / totals.acv) * 100).toFixed(0)}%</TableCell>
+                    <TableCell>{((d.acv / totals.acv) * 100 || 0).toFixed(0)}%</TableCell>
                   </React.Fragment>
                 ))}
                 <TableCell>{totalCount}</TableCell>
@@ -110,10 +103,9 @@ const DataTable = ({ data }) => {
               </TableRow>
             );
           })}
-
           <TableRow sx={{ fontWeight: 'bold' }}>
             <TableCell><strong>Total</strong></TableCell>
-            {Object.values(grouped).map((qr, i) => {
+            {Object.values(groupedByQuarter).map((qr, i) => {
               const t = qr.reduce((acc, r) => ({
                 count: acc.count + r.count,
                 acv: acc.acv + r.acv

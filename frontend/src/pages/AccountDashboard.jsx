@@ -49,7 +49,7 @@ const AccountDashboard = () => {
         totalACV={totalACV}
         groupKey="Acct_Industry"
       />
-      <TableSection data={accountData} />
+      <TableSection data={accountData} groupKey="Acct_Industry"/>
     </Grid>
   );
 };

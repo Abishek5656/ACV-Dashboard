@@ -58,7 +58,7 @@ const Dashboard = () => {
         totalACV={totalACV}
         groupKey="Cust_Type"
       />
-      <TableSection data={customerData} />
+      <TableSection data={customerData} groupKey="Cust_Type"/>
     </Grid>
   );
 };
