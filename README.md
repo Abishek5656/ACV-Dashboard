@@ -32,7 +32,7 @@ The data is provided as JSON slices:
 ## 💻 Frontend Tasks
 
 - ✅ Consume the API endpoints from the backend.
-- ✅ Use **ReactJS** (with optional **Redux** for state management).
+- ✅ Use **ReactJS** (with **Redux Toolkit** for state management).
 - ✅ Display each data slice in a **Material UI Card**.
 - ✅ Visualize data using **D3.js** charts:
   - Bar Charts
@@ -58,14 +58,13 @@ The data is provided as JSON slices:
 
 ## 📸 Screenshots
 
-![customerType](https://github.com/user-attachments/assets/b3f9cd45-9d89-431c-9e4c-6e099b862c64)
+![Image](https://github.com/user-attachments/assets/5b6d7a25-28ed-4d98-a8b2-1e0f38b6d963)
 
-![TeamType](https://github.com/user-attachments/assets/faf461ad-66ac-4de4-a0c3-9a6de417de0a)
+![Image](https://github.com/user-attachments/assets/69dfbbe3-bc19-43c1-b64d-518a559e02af)
 
-![AccountType](https://github.com/user-attachments/assets/f86ad78e-5d43-4cb7-8ad0-7c57b7a65ad8)
+![Image](https://github.com/user-attachments/assets/fdfa2c2e-d551-4e94-a3b6-d787c090e6e9)
 
-![ACVType](https://github.com/user-attachments/assets/3e3a191d-5b92-4c95-a067-c7797d0eaff0)
-
+![Image](https://github.com/user-attachments/assets/047cd850-5a10-491b-bd1e-6c2c30ab605f)
 
 ---
 Video
